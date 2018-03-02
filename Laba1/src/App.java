@@ -11,14 +11,13 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 
-/** 
- *The class creates a window with 
- *the ability to copy information
- * 
- * @version 1.0
- * @author Maxim
- * @since 2018-02-28
- */
+ /*
+  *The class creates a window with 
+  *the ability to copy information
+  * @version 1.0
+  * @author Maxim
+  * @since 2018-02-28
+  */
 
 public class App {
 	/**Property - to copy Text from 1 field to 2 field.*/
