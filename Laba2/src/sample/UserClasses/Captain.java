@@ -1,4 +1,4 @@
-package sample;
+package sample.UserClasses;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,13 +7,17 @@ public class Captain extends Student {
 
     private List<Student> studentsOfThisGroup = new ArrayList<>();
 
-    public void checkPeoples(Lecture lecture)
-    {
+    public String checkPeoples(Lecture lecture){
+        String endString = "";
         for (Student student :
                 studentsOfThisGroup) {
-            if(student.getLecture() == lecture) System.out.println("Student " + student.getName() + " was on lecture");
-            else System.out.println("Student " + student.getName() + " was not on lecture");
+            if(student.getLecture() == lecture)
+                endString += ("Student " + student.getName() + " on lecture\n");
+            else
+                endString += ("Student " + student.getName() + " not on lecture\n");
         }
+
+        return endString;
     }
 
     public Captain(String name)

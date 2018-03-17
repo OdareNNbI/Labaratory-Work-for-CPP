@@ -1,4 +1,4 @@
-package sample;
+package sample.UserClasses;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,18 @@ public class Teacher {
         subject = lecture;
     }
 
-    public void checkPeoples(Lecture lecture)
+    public String checkPeoples(Lecture lecture)
     {
+        String endString = "";
         for (Student student :
                 students) {
-            System.out.println("Student " + student.getName() + " on lecture");
+            if(student.getLecture() == lecture)
+              endString += ("Student " + student.getName() + " on lecture\n");
+            else
+                endString += ("Student " + student.getName() + " not on lecture\n");
         }
+
+        return endString;
     }
 
     public Teacher(String name)
@@ -37,4 +43,5 @@ public class Teacher {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
+
 }

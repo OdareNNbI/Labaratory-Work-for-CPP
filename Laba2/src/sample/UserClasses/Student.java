@@ -1,4 +1,4 @@
-package sample;
+package sample.UserClasses;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,5 +33,15 @@ public class Student {
 
     public Lecture getLecture() {
         return lecture;
+    }
+
+    @Override
+    public String toString() {
+        String end = "Оценки: ";
+        for (int mark :
+                marks) {
+            end +=(mark + " ");
+        }
+        return end;
     }
 }

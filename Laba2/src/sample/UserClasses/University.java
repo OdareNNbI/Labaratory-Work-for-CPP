@@ -1,4 +1,4 @@
-package sample;
+package sample.UserClasses;
 
 import java.util.*;
 
@@ -21,11 +21,11 @@ public class University {
         teachersList.add(teacher);
     }
 
-    public void setSubjectsPlane(String ... subjectsName)
+    public void setSubjectsPlane(Lecture ... lectures)
     {
-        for (String name:subjectsName
+        for (Lecture lecture:lectures
              ) {
-            subjectsList.add(new Lecture(name));
+            subjectsList.add(lecture);
         }
     }
 
