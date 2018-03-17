@@ -2,26 +2,55 @@ package sample;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
+/**
+ * Graphic User Interface main window
+ *
+ * @author Maxim Ambrazhey
+ * @version 1.0
+ * @since 2018
+ */
 public class GUI extends Pane{
-
+    /**
+     * Property - add teacher GUI
+     */
     Button addTeacherButton;
+    /**
+     * Property - add student GUI
+     */
     Button addStudentButton;
+    /**
+     * Property - add lecture GUI
+     */
     Button addLectureButton;
 
+
+    /**
+     * Property - teacher list in GUI
+     */
     VBox teachersListVBox;
+    /**
+     * Property - student list in GUI
+     */
     VBox studentsListVBox;
+    /**
+     * Property - lecture list in GUI
+     */
     VBox lecturesListVBox;
 
+    /**
+     * Property - information about chosen by object
+     */
     VBox infoVBox;
 
-
+    /**
+     * Constructor - create GUI pane
+     */
     public GUI(){
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -36,6 +65,7 @@ public class GUI extends Pane{
         teachersListVBox = new VBox(5);
         studentsListVBox = new VBox(5);
         lecturesListVBox = new VBox(5);
+
 
 
         VBox vBoxTeachers = addScrollPane(addTeacherButton,teachersListVBox,"Преподаватели");
@@ -64,6 +94,13 @@ public class GUI extends Pane{
         this.getChildren().add(gridPane);
     }
 
+    /**
+     * Add information in scrollPane
+     * @param addButton button, which create new object
+     * @param list list of objects
+     * @param string name of objects
+     * @return VBox pane with this information
+     */
     private VBox addScrollPane(Button addButton,VBox list, String string){
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(list);
