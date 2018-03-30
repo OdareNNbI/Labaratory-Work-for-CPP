@@ -19,10 +19,6 @@ public class Teacher {
      * Property - subject, which teacher read
      */
     private Subject subject;
-    /**
-     * Property - list student in university
-     */
-    private List<Student> students = new ArrayList<>();
 
     /**
      * Read lecture
@@ -40,16 +36,7 @@ public class Teacher {
      */
     public String checkPeoples(Lecture lecture)
     {
-        String endString = "";
-        for (Student student :
-                students) {
-            if(student.getLecture() == lecture)
-              endString += ("Student " + student.getName() + " on lecture\n");
-            else
-                endString += ("Student " + student.getName() + " not on lecture\n");
-        }
-
-        return endString;
+        return Journal.getJournal().setResult(lecture,false);
     }
 
     /**
@@ -77,12 +64,5 @@ public class Teacher {
         return subject;
     }
 
-    /**
-     * set student in university
-     * @param students list of students
-     */
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
 
 }

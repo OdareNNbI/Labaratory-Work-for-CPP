@@ -15,10 +15,6 @@ public class University {
      */
     private List<Teacher> teachersList = new ArrayList<>();
     /**
-     * Property - lis of student in university
-     */
-    private List<Student> studentsList = new ArrayList<>();
-    /**
      * Property - lis of subject in university
      */
     private List<Subject> subjectsList = new ArrayList<>();
@@ -27,12 +23,9 @@ public class University {
      * Add student in university
      * @param student student, which want enter in university
      */
-    public void addStudent(Student student)
+    public void addStudent(AbstractStudent student)
     {
-        if(student.getClass() == Captain.class)
-            ((Captain)student).setStudentsOfThisGroup(studentsList);
-
-        studentsList.add(student);
+        Journal.getJournal().addStudent(student);
     }
 
     /**
@@ -41,7 +34,6 @@ public class University {
      */
     public void addTeacher(Teacher teacher)
     {
-        teacher.setStudents(studentsList);
         teachersList.add(teacher);
     }
 
@@ -51,8 +43,8 @@ public class University {
      */
     public void setSubjectsPlane(Lecture ... lectures)
     {
-        for (Lecture lecture:lectures
-             ) {
+        for (Lecture lecture:
+                lectures) {
             subjectsList.add(lecture);
         }
     }
@@ -73,11 +65,4 @@ public class University {
         return subjectsList;
     }
 
-    /**
-     * get students list
-     * @return students list
-     */
-    public List<Student> getStudentsList() {
-        return studentsList;
-    }
 }

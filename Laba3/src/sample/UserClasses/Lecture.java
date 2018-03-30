@@ -23,7 +23,7 @@ public class Lecture extends  Subject{
      * @param student student, who attend lecture
      * @return mark, which student get on lecture
      */
-    public int addStudent(Student student)
+    public int addStudent(AbstractStudent student)
     {
         return (int)(Math.random() * 10);
     }

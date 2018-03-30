@@ -72,8 +72,8 @@ public class Controller {
 
         gui.studentsListVBox.getChildren().clear();
 
-        for (Student student:
-                university.getStudentsList()) {
+        for (AbstractStudent student:
+                Journal.getJournal().getStudents()) {
             Button button = new Button(student.getName());
             button.setOnAction((x)->showInfo(student));
 
@@ -118,7 +118,10 @@ public class Controller {
         takeLecture.setOnAction((x)->{
             Lecture lecture = InputDate.chooseLectures((ArrayList)university.getSubjectsList());
             if(lecture != null)
-            teacher.readLecture(lecture);
+            {
+                teacher.readLecture(lecture);
+                showInfo(teacher);
+            }
             else InputDate.notSelectLecture();
         });
 
@@ -142,7 +145,7 @@ public class Controller {
      * Show information about student in GUI
      * @param student information about student
      */
-    public void showInfo(Student student)
+    public void showInfo(AbstractStudent student)
     {
         gui.infoVBox.getChildren().clear();
         gui.infoVBox.getChildren().add(new Text("Name: " + student.getName()));
@@ -163,6 +166,11 @@ public class Controller {
             if(lecture != null)
             {
                 student.attendLecture(lecture);
+                if(student.getClass() == Captain.class)
+                    InputDate.showStudents(((Captain)student).checkPeoples(lecture));
+
+
+                showInfo(student);
             }
             else InputDate.notSelectLecture();
         });

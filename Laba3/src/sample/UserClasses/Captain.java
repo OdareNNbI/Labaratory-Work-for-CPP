@@ -13,26 +13,12 @@ import java.util.List;
 public class Captain extends Student {
 
     /**
-     * Property - list of university students
-     */
-    private List<Student> studentsOfThisGroup = new ArrayList<>();
-
-    /**
      * Check students on lecture
      * @param lecture lecture, on which captain check students
      * @return string with information about students on lecture
      */
     public String checkPeoples(Lecture lecture){
-        String endString = "";
-        for (Student student :
-                studentsOfThisGroup) {
-            if(student.getLecture() == lecture)
-                endString += ("Student " + student.getName() + " on lecture\n");
-            else
-                endString += ("Student " + student.getName() + " not on lecture\n");
-        }
-
-        return endString;
+        return Journal.getJournal().setResult(lecture,true);
     }
 
     /**
@@ -44,11 +30,11 @@ public class Captain extends Student {
         super(name);
     }
 
-    /**
-     * Set list of student
-     * @param studentsOfThisGroup list student in university
-     */
-    public void setStudentsOfThisGroup(List<Student> studentsOfThisGroup) {
-        this.studentsOfThisGroup = studentsOfThisGroup;
+
+    @Override
+    public void attendLecture(Lecture lecture)
+    {
+        super.attendLecture(lecture);
+        checkPeoples(lecture);
     }
 }
