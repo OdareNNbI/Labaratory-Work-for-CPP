@@ -7,6 +7,7 @@ import javafx.scene.text.Text;
 import sample.UserClasses.*;
 
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 /**
  * Controller between {@link GUI} and {@link University}
@@ -72,10 +73,10 @@ public class Controller {
 
         gui.studentsListVBox.getChildren().clear();
 
-        for (AbstractStudent student:
+        for (JournalString journalString:
                 Journal.getJournal().getStudents()) {
-            Button button = new Button(student.getName());
-            button.setOnAction((x)->showInfo(student));
+            Button button = new Button(journalString.toString());
+            button.setOnAction((x)->showInfo(journalString.getStudent()));
 
             gui.studentsListVBox.getChildren().add(button);
         }
@@ -149,8 +150,8 @@ public class Controller {
     {
         gui.infoVBox.getChildren().clear();
         gui.infoVBox.getChildren().add(new Text("Name: " + student.getName()));
-        if(student.getLecture() != null)
-        gui.infoVBox.getChildren().add(new Text("Лекция: " + student.getLecture()));
+        if(Journal.getJournal().isOnLecture(student) != null)
+        gui.infoVBox.getChildren().add(new Text("Лекция: " + Journal.getJournal().isOnLecture(student)));
 
         if (student.getMarks().isEmpty() == false) {
             gui.infoVBox.getChildren().add(new Text(student.toString()));
@@ -179,7 +180,7 @@ public class Controller {
         {
             Button checkStudents = new Button("Проверить посещение");
             checkStudents.setOnAction((x)->{
-                Lecture lecture = student.getLecture();
+                Lecture lecture = Journal.getJournal().isOnLecture(student);
                 if(lecture == null)
                 {
                     InputDate.notOnLecture();

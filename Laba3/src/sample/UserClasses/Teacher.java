@@ -15,6 +15,7 @@ public class Teacher {
      * Property - Teacher name
      */
     private String name;
+
     /**
      * Property - subject, which teacher read
      */
@@ -36,7 +37,7 @@ public class Teacher {
      */
     public String checkPeoples(Lecture lecture)
     {
-        return Journal.getJournal().setResult(lecture,false);
+        return lecture.checkPeoples();
     }
 
     /**

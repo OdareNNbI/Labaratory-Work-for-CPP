@@ -3,15 +3,18 @@ package sample.UserClasses;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The base class for student and captain
+ *
+ * @author Maxim Ambrazhey
+ * @version 1.0
+ * @since 2018
+ */
 public abstract class AbstractStudent {
     /**
      * Property - student name
      */
     protected String name;
-    /**
-     * Property - lecture, on which attend student
-     */
-    protected Lecture lecture;
     /**
      * Property - list of student marks, which student get on lectures
      */
@@ -20,6 +23,7 @@ public abstract class AbstractStudent {
 
     /**
      * Get student marks
+     *
      * @return student marks
      */
     public List<Integer> getMarks() {
@@ -28,6 +32,7 @@ public abstract class AbstractStudent {
 
     /**
      * Set student marks
+     *
      * @param marks set marks
      */
     public void setMarks(List<Integer> marks) {
@@ -36,36 +41,31 @@ public abstract class AbstractStudent {
 
     /**
      * Attend student on lecture
+     *
      * @param lecture lecture, which student want attend
      */
-    public void attendLecture(Lecture lecture)
-    {
-        this.lecture = lecture;
+    public void attendLecture(Lecture lecture) {
+        Journal.getJournal().setStudentOnLecture(this,lecture);
         marks.add(lecture.addStudent(this));
     }
 
     /**
      * get student name
+     *
      * @return student name
      */
     public String getName() {
         return name;
     }
 
-    /**
-     * get student lecture
-     * @return lecture
-     */
-    public Lecture getLecture() {
-        return lecture;
-    }
 
-    public AbstractStudent(String name)
-    {
+    /**
+     * Constructor - create abstract student
+     *
+     * @param name - nameof student
+     */
+    public AbstractStudent(String name) {
         this.name = name;
     }
 
-    public void setLecture(Lecture lecture) {
-        this.lecture = lecture;
-    }
 }

@@ -18,7 +18,7 @@ public class Captain extends Student {
      * @return string with information about students on lecture
      */
     public String checkPeoples(Lecture lecture){
-        return Journal.getJournal().setResult(lecture,true);
+        return Journal.getJournal().setResult(lecture);
     }
 
     /**

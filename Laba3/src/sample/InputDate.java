@@ -22,6 +22,7 @@ public class InputDate {
         HBox hBox = new HBox();
         TextField inputName = new TextField();
         Text inputNameText = new Text("Введите имя");
+        CheckBox isCaptain = new CheckBox("Сароста");
 
         hBox.setSpacing(5);
         hBox.getChildren().addAll(inputNameText, inputName);
@@ -29,8 +30,7 @@ public class InputDate {
 
         Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
         if (isStudent) {
-            ButtonType buttonType = ButtonType.APPLY;
-            dialog.getButtonTypes().add(buttonType);
+            hBox.getChildren().add(isCaptain);
         }
 
         dialog.getDialogPane().setContent(hBox);
@@ -38,7 +38,7 @@ public class InputDate {
 
 
         Optional<ButtonType> result = dialog.showAndWait();
-        if (result.get() == ButtonType.APPLY && isStudent){
+        if (isStudent && isCaptain.isSelected()){
             Controller.isCaptain = true;
         }
         return inputName.getText();

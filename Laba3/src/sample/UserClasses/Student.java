@@ -11,8 +11,6 @@ import java.util.List;
  * @since  2018
  */
 public class Student extends AbstractStudent{
-
-
     /**
      * Constructor - create Student object
      * @param name student name
@@ -21,8 +19,6 @@ public class Student extends AbstractStudent{
     {
         super(name);
     }
-
-
 
     @Override
     public String toString() {
